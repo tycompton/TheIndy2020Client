@@ -21,7 +21,7 @@ export const prices = [
   },
   {
     _id: 4,
-    name: "30 to £39",
+    name: "£30 to £39",
     array: [30, 39]
   },
   {

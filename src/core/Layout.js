@@ -4,13 +4,13 @@ import '../styles.css';
 
 const Layout = ({ 
   title = "Title", 
-  description = "Description", 
+  description = "", 
   className, 
   children 
 }) => (
   <div>
     <Menu />
-    <div className="jumbotron">
+    <div className="jumbotron text-center">
       <h2>{title}</h2>
       <p className="lead">{description}</p>
     </div>

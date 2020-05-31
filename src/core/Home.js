@@ -19,7 +19,7 @@ const Home = () => {
         setProductsBySell(data);
       }
     });
-  };
+  }; 
 
   const loadProductsByArrival = () => {
     getProducts("createdAt").then((data) => {
@@ -39,12 +39,12 @@ const Home = () => {
 
   return (
     <Layout
-      title="Home Page"
-      description="Ecommerce App"
+      title="The Independent Bottle Shop"
+      description=""
       className="container-fluid"
     >
       <Search />
-      <h2 className="mb-4">Best Sellers</h2>
+      <h2 className="mb-4 text-center">Best Sellers</h2>
       <div className="row">
         {productsBySell.map((product, i) => (
           <div key={i} className="col-4 mb-3">
@@ -53,7 +53,7 @@ const Home = () => {
         ))}
       </div>
 
-      <h2 className="mb-4">New Arrivals</h2>
+      <h2 className="mb-4 text-center">New Arrivals</h2>
       <div className="row">
         {productsByArrival.map((product, i) => (
           <div key={i} className="col-4 mb-3">

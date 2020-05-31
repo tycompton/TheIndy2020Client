@@ -24,7 +24,7 @@ const Shop = () => {
       } else {
         setCategories(data);
       }
-    });
+    }); 
   };
 
   const loadFilteredResults = (newFilters) => {
@@ -98,20 +98,20 @@ const Shop = () => {
 
   return (
     <Layout
-      title="Shop Page"
-      description="Search and find beers"
+      title="Beer Shop"
+      description="Search our huge selection of beers"
       className="container-fluid"
     >
       <div className="row">
         <div className="col-4">
-          <h4>Filter by category</h4>
+          <h4>Filter by style</h4>
           <ul>
             <CheckBox
               categories={categories}
               handleFilters={(filters) => handleFilters(filters, "category")}
             />
           </ul>
-          <h4>Filter by price range</h4>
+          <h4>Filter by price</h4>
           <div>
             <RadioBox
               prices={prices}
@@ -120,7 +120,7 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-8">
-          <h2 className="mb-4">Products</h2>
+          {/* <h2 className="mb-4">Products</h2> */}
           <div className="row">
             {filteredResults.map((product, i) => (
               <div key={i} className="col-4 mb-3">
@@ -128,7 +128,6 @@ const Shop = () => {
               </div>
             ))}
           </div>
-          <hr />
           {loadMoreButton()}
         </div>
       </div>
