@@ -56,13 +56,14 @@ const Shop = () => {
 
   const loadMoreButton = () => {
     return (
-      size > 0 && size >= limit && (
+      size > 0 &&
+      size >= limit && (
         <button onClick={loadMore} className="btn btn-warning mb-5">
           Load more
         </button>
       )
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     init();
@@ -99,7 +100,7 @@ const Shop = () => {
   return (
     <Layout
       title="Beer Shop"
-      description="Search our huge selection of beers"
+      description="Shop our huge selection of beers"
       className="container-fluid"
     >
       <div className="row">

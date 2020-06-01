@@ -12,7 +12,6 @@ const Home = () => {
 
   const loadProductsBySell = () => {
     getProducts("sold").then((data) => {
-      console.log(data);
       if (data.error) {
         setError(data.error);
       } else {
@@ -23,7 +22,6 @@ const Home = () => {
 
   const loadProductsByArrival = () => {
     getProducts("createdAt").then((data) => {
-      console.log(data);
       if (data.error) {
         setError(data.error);
       } else {
