@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Layout from './Layout';
 import { getBraintreeClientToken, processPayment, createOrder } from './apiCore';
 import { emptyCart } from './cartHelpers';
-import Card from './Card';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 import DropIn from 'braintree-web-drop-in-react';
@@ -100,7 +98,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
             setData({ ...data, success: response.success });
             emptyCart(() => {
               setRun(!run);
-              // console.log("payment success and empty cart");
+              console.log("payment success and empty cart");
               setData({ 
                 loading: false,
                 success: true

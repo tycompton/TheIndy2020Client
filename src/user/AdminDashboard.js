@@ -11,12 +11,7 @@ const AdminDashboard = () => {
     return (
       <div className="card">
         <h4 className="card-header">Admin Links</h4>
-        <ul className="list-group">
-          <li className="list-group-item">
-            <Link className="nav-link" to="/create/category">
-              Create Category
-            </Link>
-          </li>
+        <ul className="list-group">         
           <li className="list-group-item">
             <Link className="nav-link" to="/create/product">
               Create Product
@@ -30,6 +25,11 @@ const AdminDashboard = () => {
           <li className="list-group-item">
             <Link className="nav-link" to="/create/brewery">
               Create Brewery
+            </Link>
+          </li>
+          <li className="list-group-item">
+            <Link className="nav-link" to="/create/category">
+              Create Style
             </Link>
           </li>
         </ul>

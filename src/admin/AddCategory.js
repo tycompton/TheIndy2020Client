@@ -8,7 +8,7 @@ const AddCategory = () => {
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
-
+ 
   // destructure user and token from local storage
   const {user, token} = isAuthenticated()
 
@@ -28,6 +28,8 @@ const AddCategory = () => {
       } else {
         setError("");
         setSuccess(true);
+        setTimeout(() => window.location.reload(), 2000);
+        return () => clearTimeout();
       }
     });
   };
@@ -45,23 +47,36 @@ const AddCategory = () => {
           required
         />
       </div>
-      <button className="btn btn-outline-primary">
-        Create Category
+      <button className="btn btn-primary">
+        Create Style
       </button>
     </form>
   )
 
   const showSuccess = () => {
     if (success) {
-      return <h3 className="text-success">{name} is created</h3>;
+      return <h3 className="text-success">{name} created successfully!</h3>;
     }
   };
 
   const showError = () => {
     if (error) {
-      return <h3 className="text-danger">{name} is aleady a category</h3>;
+      return <h3 className="text-danger">{name} is aleady a style</h3>;
     }
   };
+
+  const reloadWindow = () => {
+    window.location.reload();
+  }
+
+  const cancelButton = () => (
+    <button 
+      className="btn btn-secondary mt-3"
+      onClick={reloadWindow}
+    >
+      Cancel
+    </button>
+  )
 
   const goBack = () => (
     <div className="mt-5">
@@ -73,7 +88,7 @@ const AddCategory = () => {
 
   return (
     <Layout
-      title="Add Category"
+      title="Add Style"
       description={`Hi ${user.name}, let's add a new category, shall we?`}
     >
       <div className="row">
@@ -82,6 +97,7 @@ const AddCategory = () => {
             {showSuccess()}
             {showError()}
             {newCategoryForm()}
+            {cancelButton()}
             {goBack()}
         </div>
       </div>

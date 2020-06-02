@@ -34,6 +34,14 @@ const ManageProducts = () => {
     loadProducts()
   }, [])
 
+  const goBack = () => (
+    <div className="mt-5">
+      <Link to="/admin/dashboard" className="text-warning">
+        Back to dashboard
+      </Link>
+    </div>
+  );
+
   return (
     <Layout title="Manage Products" description="" className="container-fluid">
       <div className="row">
@@ -45,7 +53,9 @@ const ManageProducts = () => {
                 key={i}
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
-                <strong>{p.name}</strong>
+                <Link to={`/product/${p._id}`}>
+                  <strong>{p.name}</strong>
+                </Link>
                 <Link to={`/admin/product/update/${p._id}`}>
                   <span className="badge badge-warning badge-pill">Update</span>
                 </Link>
@@ -62,6 +72,7 @@ const ManageProducts = () => {
           </ul>
         </div>
       </div>
+      {goBack()}
     </Layout>
   );
 };

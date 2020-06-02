@@ -24,7 +24,7 @@ const Shop = () => {
         setError(data.error);
       } else {
         setCategories(data);
-        console.log(data);
+        // console.log(data);
       }
     }); 
   };
@@ -35,7 +35,7 @@ const Shop = () => {
         setError(data.error);
       } else {
         setBreweries(data);
-        console.log(data);
+        // console.log(data);
       }
     }); 
   };
@@ -64,7 +64,7 @@ const Shop = () => {
         setSize(data.size);
         setSkip(toSkip);
       }
-    });
+    }); 
   };
 
   const loadMoreButton = () => {

@@ -28,6 +28,7 @@ const AddBrewery = () => {
       } else {
         setError("");
         setSuccess(true);
+        setTimeout(() => window.location.reload(), 2000);
       }
     });
   };
@@ -45,7 +46,7 @@ const AddBrewery = () => {
           required
         />
       </div>
-      <button className="btn btn-outline-primary">
+      <button className="btn btn-primary">
         Create Brewery
       </button>
     </form>
@@ -53,7 +54,7 @@ const AddBrewery = () => {
 
   const showSuccess = () => {
     if (success) {
-      return <h3 className="text-success">{name} is created</h3>;
+      return <h3 className="text-success">{name} created successfully!</h3>;
     }
   };
 
@@ -62,6 +63,19 @@ const AddBrewery = () => {
       return <h3 className="text-danger">{name} is already a brewery</h3>;
     }
   };
+
+  const reloadWindow = () => {
+    window.location.reload();
+  }
+
+  const cancelButton = () => (
+    <button 
+      className="btn btn-secondary mt-3"
+      onClick={reloadWindow}
+    >
+      Cancel
+    </button>
+  )
 
   const goBack = () => (
     <div className="mt-5">
@@ -73,8 +87,8 @@ const AddBrewery = () => {
 
   return (
     <Layout
-      title="Add Category"
-      description={`Hi ${user.name}, let's add a new category, shall we?`}
+      title="Add Brewery"
+      description={`Hi ${user.name}, we're gonna need another brewery`}
     >
       <div className="row">
         <div 
@@ -82,6 +96,7 @@ const AddBrewery = () => {
             {showSuccess()}
             {showError()}
             {newBreweryForm()}
+            {cancelButton()}
             {goBack()}
         </div>
       </div>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
-import Moment from 'moment';
 import { addItem, updateItem, removeItem } from './cartHelpers';
-import { getBreweries } from '../admin/apiAdmin';
+// import Moment from 'moment';
 
 const Card = ({
   product,
@@ -109,22 +108,24 @@ const Card = ({
         </div>
       </div>;
   };
-
+ 
   return (
     <div className="card text-center">
       <div className="card-header">
-        <strong>{product.brewery.name}</strong><br />
-        <strong>{product.name}</strong>
+        <strong>{product.brewery.name}</strong>
       </div>
       <div className="card-body">
         {/* {shouldRedirect(redirect)} */}
-        <ShowImage item={product} url="product" />
-        
+        <h5 className="class-title mb-3"><strong>{product.name}</strong></h5>
+        <Link to={`/product/${product._id}`}>
+          <ShowImage item={product} url="product" alt="product image" />
+        </Link>
+
         {/* <p className="lead mt-2">{product.description}</p> */}
 
-        <p>£{product.price} {product.category && product.category.name}</p>
+        <p>£{product.price} {showStock(product.quantity)}</p>
 
-        <p>{showStock(product.quantity)}</p>
+        {/* <p>{product.category && product.category.name}</p> */}
 
         {/* Show Date Added */}
         {/* <p>Added {Moment(product.createdAt).fromNow()}</p> */}

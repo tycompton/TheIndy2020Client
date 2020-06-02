@@ -78,11 +78,11 @@ const AddProduct = () => {
           categories: data[0],
           breweries: data[1], 
           formData: new FormData() });
-        console.log(data);
+        // console.log(data);
       }
     });
   };
-
+ 
   useEffect(() => {
     init(); 
   }, []);
@@ -112,6 +112,7 @@ const AddProduct = () => {
           loading: false,
           createdProduct: data.name,
         });
+        setTimeout(() => window.location.reload(), 2000);
       }
     });
   };
@@ -196,7 +197,7 @@ const AddProduct = () => {
         </select>
       </div>
 
-      <button className="btn btn-outline-primary">Create Product</button>
+      <button className="btn btn-primary">Create Product</button>
     </form>
   );
 
@@ -224,6 +225,27 @@ const AddProduct = () => {
         <h2>Loading...</h2>
       </div>
     );
+  
+  const reloadWindow = () => {
+    window.location.reload();
+  }
+
+  const cancelButton = () => (
+    <button 
+      className="btn btn-secondary mt-2"
+      onClick={reloadWindow}
+    >
+      Cancel
+    </button>
+  )
+
+  const goBack = () => (
+    <div className="mt-5 mb-5">
+      <Link to="/admin/dashboard" className="text-warning">
+        Back to dashboard
+      </Link>
+    </div>
+  );
 
   return (
     <Layout
@@ -237,6 +259,8 @@ const AddProduct = () => {
             {showSuccess()}
             {showError()}
             {newPostForm()}
+            {cancelButton()}
+            {goBack()}
         </div>
       </div>
     </Layout>
