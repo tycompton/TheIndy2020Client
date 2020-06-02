@@ -4,7 +4,7 @@ import { getProducts } from './apiCore';
 import Card from './Card';
 import Search from './Search';
 
-const Home = () => {
+const Home = () => { 
 
   const [productsBySell, setProductsBySell] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);

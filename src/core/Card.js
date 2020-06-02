@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
 import Moment from 'moment';
 import { addItem, updateItem, removeItem } from './cartHelpers';
+import { getBreweries } from '../admin/apiAdmin';
 
 const Card = ({
   product,
@@ -112,6 +113,7 @@ const Card = ({
   return (
     <div className="card text-center">
       <div className="card-header">
+        <strong>{product.brewery.name}</strong><br />
         <strong>{product.name}</strong>
       </div>
       <div className="card-body">

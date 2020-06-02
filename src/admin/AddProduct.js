@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
-import { createProduct, getCategories } from './apiAdmin';
+import { createProduct, getCategories, getBreweries, getAll } from './apiAdmin';
 
 const AddProduct = () => {
 
@@ -12,6 +12,8 @@ const AddProduct = () => {
     price: "",
     categories: [],
     category: "",
+    breweries: [],
+    brewery: "",
     delivery: "",
     quantity: "",
     image: "",
@@ -30,6 +32,8 @@ const AddProduct = () => {
     price,
     categories,
     category,
+    breweries,
+    brewery,
     delivery,
     quantity,
     image,
@@ -41,19 +45,48 @@ const AddProduct = () => {
   } = values;
 
   // load categories and set form data
+  // const initCategories = () => {
+  //   getCategories().then((data) => {
+  //     if (data.error) {
+  //       setValues({ ...values, error: data.error });
+  //     } else {
+  //       setValues({ ...values, categories: data, formData: new FormData() });
+  //       console.log(data);
+  //     }
+  //   });
+  // };
+
+  // load breweries and set form data
+  // const initBreweries = () => {
+  //   getBreweries().then((data) => {
+  //     if (data.error) {
+  //       setValues({ ...values, error: data.error });
+  //     } else {
+  //       setValues({ ...values, breweries: data, formData: new FormData() });
+  //       console.log(data);
+  //     }
+  //   });
+  // };
+
   const init = () => {
-    getCategories().then((data) => {
+    getAll().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
-        setValues({ ...values, categories: data, formData: new FormData() });
+        setValues({ 
+          ...values, 
+          categories: data[0],
+          breweries: data[1], 
+          formData: new FormData() });
+        console.log(data);
       }
     });
   };
 
   useEffect(() => {
-    init();
+    init(); 
   }, []);
+
 
   const handleChange = (name) => (event) => {
     const value = name === "image" ? event.target.files[0] : event.target.value;
@@ -95,6 +128,15 @@ const AddProduct = () => {
             accept="image/*"
           />
         </label>
+      </div>
+
+      <div className="form-group">
+        <label className="text-muted">Brewery</label>
+        <select onChange={handleChange("brewery")} className="form-control">
+          <option>Select brewery</option>
+          {breweries &&
+            breweries.map((brewery, i) => <option key={i} value={brewery._id}>{brewery.name}</option>)};
+        </select>
       </div>
 
       <div className="form-group">
