@@ -16,17 +16,17 @@ const Card = ({
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
 
-  const showViewButton = (showViewProductButton) => {
-    return (
-      showViewProductButton && (
-        <Link to={`/product/${product._id}`} className="mr-2">
-          <button className="btn btn-outline-primary mt-2 mb-2">
-            View Product
-          </button>
-        </Link>
-      )
-    );
-  };
+  // const showViewButton = (showViewProductButton) => {
+  //   return (
+  //     showViewProductButton && (
+  //       <Link to={`/product/${product._id}`} className="mr-2">
+  //         <button className="btn btn-outline-primary mt-2 mb-2">
+  //           View Product
+  //         </button>
+  //       </Link>
+  //     )
+  //   );
+  // };
 
   const addToCart = () => {
     addItem(product, () => {
@@ -45,7 +45,7 @@ const Card = ({
       showAddToBasketButton && (
         <button
           onClick={addToCart}
-          className="btn btn-pill btn-secondary btn-block mt-2 mb-2"
+          className="btn btn-secondary btn-block mt-2 mb-2"
         >
           Add to Basket
         </button>
@@ -61,7 +61,7 @@ const Card = ({
             removeItem(product._id);
             setRun(!run); // run useEffect in parent Cart
           }}
-          className="btn btn-pill btn-danger btn-block mt-2 mb-2"
+          className="btn btn-danger btn-block mt-2 mb-2"
         >
           Remove Item
         </button>
@@ -69,11 +69,16 @@ const Card = ({
     );
   };
 
+  // Only show price if product is in stock
+  const showPrice = (quantity) => {
+    return quantity > 0 ? <span>£{parseFloat((product.price)).toFixed(2)}</span> : null;
+  };
+
   const showStock = (quantity) => {
     return quantity > 0 ? (
       <span className="badge badge-info badge-pill">In Stock</span>
     ) : (
-      <span className="badge badge-danger badge-pill">Out of Stock</span>
+      <span className="badge badge-danger badge-pill">Sold Out</span>
     );
   };
 
@@ -116,15 +121,15 @@ const Card = ({
       </div>
       <div className="card-body">
         {/* {shouldRedirect(redirect)} */}
-        <h5 className="class-title mb-3"><strong>{product.name}</strong></h5>
+        <h5 className="class-title mb-3">{product.name}</h5>
         <Link to={`/product/${product._id}`}>
           <ShowImage item={product} url="product" alt="product image" />
         </Link>
 
         {/* <p className="lead mt-2">{product.description}</p> */}
 
-        <p>£{product.price} {showStock(product.quantity)}</p>
-
+        <p>{showPrice(product.quantity)} {showStock(product.quantity)}</p>
+        
         {/* <p>{product.category && product.category.name}</p> */}
 
         {/* Show Date Added */}

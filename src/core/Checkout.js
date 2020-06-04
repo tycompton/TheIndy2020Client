@@ -80,6 +80,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
           paymentMethodNonce: nonce,
           amount: getTotal(products),
         };
+        
         processPayment(userId, token, paymentData)
           .then((response) => {
             
@@ -121,7 +122,10 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
       <div onBlur={() => setData({ ...data, error: "" })}>
         {data.clientToken !== null && products.length > 0 ? (
           <div>
-            <div className="gorm-group mb-3">
+            
+            <div className="form-group mb-3">
+              <p className="small">Free collection | Delivery charges apply</p>
+              <p className="small">Brighton £30 minimum order | Hove £40 minimum order</p>
               <label className="text-muted">Delivery address:</label>
               <textarea
                 onChange={handleAddress}
@@ -130,7 +134,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                 placeholder="Type your delivery address here..."
               />
             </div>
-
+           
             <DropIn
               options={{
                 authorization: data.clientToken,
@@ -171,7 +175,8 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
 
   return (
     <div>
-      <h2>Total: £{financial(getTotal())}</h2>
+      {/* <h3>Total: £{financial(getTotal())}</h3> */}
+      <h3>Total: £{getTotal()}</h3>
       {showLoading(data.loading)}
       {showSuccess(data.success)}
       {showError(data.error)}

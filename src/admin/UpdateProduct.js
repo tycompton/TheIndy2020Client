@@ -149,7 +149,7 @@ const UpdateProduct = ({match}) => {
         <label className="text-muted">Price</label>
         <input
           onChange={handleChange("price")}
-          type="number"
+          // type="number"
           className="form-control"
           defaultValue={price}
         />

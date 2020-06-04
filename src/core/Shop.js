@@ -5,6 +5,7 @@ import { getCategories, getFilteredProducts, getBreweries } from "./apiCore";
 import CheckBox from "./CheckBox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
+import Search from './Search';
 
 const Shop = () => {
   const [myFilters, setMyFilters] = useState({
@@ -76,7 +77,7 @@ const Shop = () => {
         </button>
       )
     );
-  };
+  }; 
 
   useEffect(() => {
     initCategories();
@@ -113,7 +114,7 @@ const Shop = () => {
 
   return (
     <Layout
-      title="Beer Shop"
+      title="Beer Room"
       description="Shop our huge selection of beers"
       className="container-fluid"
     >
@@ -143,6 +144,7 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-8">
+          <Search />
           {/* <h2 className="mb-4">Products</h2> */}
           <div className="row">
             {filteredResults.map((product, i) => (

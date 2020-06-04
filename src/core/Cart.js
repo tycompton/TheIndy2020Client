@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { getCart } from './cartHelpers';
 import Card from './Card';
-import { Link } from 'react-router-dom';
 import Checkout from './Checkout';
 
 const Cart = () => {
@@ -17,7 +17,8 @@ const Cart = () => {
   const showItems = (items) => {
     return (
       <div>
-        <h2>Your basket has {`${items.length}`} items</h2>
+        {/* <h3>Your basket has {`${items.length}`} items</h3> */}
+        <h3>Basket</h3>
         <hr />
         {items.map((product, i) => (
           <Card 
@@ -35,9 +36,9 @@ const Cart = () => {
   };
 
   const noItemsMessage = () => (
-    <h2>
+    <h3>
       Your basket is empty <br /> <Link to="/shop">Continue shopping</Link>
-    </h2>
+    </h3>
   );
 
   return (
@@ -52,7 +53,7 @@ const Cart = () => {
           {items.length > 0 ? showItems(items) : noItemsMessage() }
         </div>
         <div className="col-6">
-          <h2 className="mb4">Your Basket Summary</h2>
+          <h3 className="mb4">Order Summary</h3>
           <hr />
           <Checkout setRun={setRun} products={items} />
         </div>
