@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import Card from "./Card";
 import { getCategories, getFilteredProducts, getBreweries } from "./apiCore";
-import CheckBox from "./CheckBox";
+import CheckBox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
 import Search from './Search';
