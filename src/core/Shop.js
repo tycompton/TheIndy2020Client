@@ -144,11 +144,11 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-8">
-          <Search />
+          {/* <Search /> */}
           {/* <h2 className="mb-4">Products</h2> */}
           <div className="row">
             {filteredResults.map((product, i) => (
-              <div key={i} className="col-6 mb-3">
+              <div key={i} className="col-md-6 col-lg-4 mb-3">
                 <Card product={product} />
               </div>
             ))}
