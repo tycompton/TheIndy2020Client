@@ -40,7 +40,7 @@ const Home = () => {
       description=""
       className="container-fluid"
     >
-      <h2 className="mb-4 text-center">Best Sellers</h2>
+      <h2 className="mb-4 text-center">Best Sellers2020</h2>
       <div className="row">
         {productsBySell.map((product, i) => (
           <div key={i} className="col-xs-6 col-md-4 col-lg-3 mb-3">
