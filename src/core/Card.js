@@ -115,35 +115,63 @@ const Card = ({
   };
  
   return (
-    <div className="card text-center">
-      <div className="card-header">
-        <strong>{product.brewery.name}</strong>
-      </div>
-      <div className="card-body">
-        {/* {shouldRedirect(redirect)} */}
-        <h5 className="class-title mb-3">{product.name}</h5>
-        <Link to={`/product/${product._id}`}>
-          <ShowImage item={product} url="product" alt="product image" />
-        </Link>
+    // <div className="card text-center">
+    //   <div className="card-header text-white bg-dark">
+    //     <strong>{product.brewery.name}</strong>
+    //   </div>
+    //   <div className="card-body">
+    //     {/* {shouldRedirect(redirect)} */}
+    //     <h5 className="class-title mb-3">{product.name}</h5>
+    //     <Link to={`/product/${product._id}`}>
+    //       <ShowImage item={product} url="product" alt="product image" />
+    //     </Link>
 
-        {/* <p className="lead mt-2">{product.description}</p> */}
+    //     {/* <p className="lead mt-2">{product.description}</p> */}
 
-        <p>{showPrice(product.quantity)} {showStock(product.quantity)}</p>
+    //     <p>{showPrice(product.quantity)} {showStock(product.quantity)}</p>
         
-        {/* <p>{product.category && product.category.name}</p> */}
+    //     {/* <p>{product.category && product.category.name}</p> */}
 
-        {/* Show Date Added */}
-        {/* <p>Added {Moment(product.createdAt).fromNow()}</p> */}
+    //     {/* Show Date Added */}
+    //     {/* <p>Added {Moment(product.createdAt).fromNow()}</p> */}
 
-        {/* Conditionally Show View Product Button */}
-        {/* {showViewButton(showViewProductButton)} */}
+    //     {/* Conditionally Show View Product Button */}
+    //     {/* {showViewButton(showViewProductButton)} */}
 
-        {/*Conditionally Show Add To Basket Button */}
-        {showAddToBasket(showAddToBasketButton)}
+    //     {/*Conditionally Show Add To Basket Button */}
+    //     {showAddToBasket(showAddToBasketButton)}
 
-        {showCartUpdateOptions(cartUpdate)}
+    //     {showCartUpdateOptions(cartUpdate)}
 
-        {showRemoveButton(showRemoveProductButton)}
+    //     {showRemoveButton(showRemoveProductButton)}
+    //   </div>
+    // </div>    
+
+    <div className="card-deck">
+      <div className="card text-center">
+        
+        <div className="card-header text-white">
+          <strong>{product.brewery.name}</strong>
+        </div>
+
+        <div className="card-body">
+        
+          
+            <Link to={`/product/${product._id}`}>
+              <ShowImage item={product} url="product" alt="product image" />
+            </Link>
+          
+          <p className="card-title mb-3"><strong>{product.name}</strong></p>
+
+          <p>{showPrice(product.quantity)} {showStock(product.quantity)}</p>
+          
+          {showAddToBasket(showAddToBasketButton)}
+
+          {showCartUpdateOptions(cartUpdate)}
+
+          {showRemoveButton(showRemoveProductButton)}
+        </div>
+
       </div>
     </div>    
   );
